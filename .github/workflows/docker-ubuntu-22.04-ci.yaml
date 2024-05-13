@@ -9,7 +9,7 @@ on:
     - '*'
 
     paths:
-    - 'ubuntu/**'
+    - 'ubuntu-22.04/**'
 
 env:
   REGISTRY_IMAGE: imroc/nftables
@@ -54,7 +54,7 @@ jobs:
       id: build
       uses: docker/build-push-action@v5
       with:
-        context: ./ubuntu
+        context: ./ubuntu-22.04
         platforms: ${{ matrix.platform }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
