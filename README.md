@@ -1,5 +1,5 @@
-# docker-nftables-ubuntu
+# docker-nftables
 
 A multi-platform docker container of nftables.
 
-Docker image: [imroc/nftables-ubuntu:latest](https://hub.docker.com/r/imroc/nftables-ubuntu).
+Docker image: [imroc/nftables:latest](https://hub.docker.com/r/imroc/nftables).

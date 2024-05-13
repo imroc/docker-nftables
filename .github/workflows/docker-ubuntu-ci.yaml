@@ -6,13 +6,13 @@ on:
     - '*'
 
     tags:
-    - v*
+    - '*'
 
-    paths-ignore:
-    - '**.md'
+    paths:
+    - 'ubuntu/**'
 
 env:
-  REGISTRY_IMAGE: imroc/nftables-ubuntu
+  REGISTRY_IMAGE: imroc/nftables
 
 jobs:
   build:
@@ -40,7 +40,7 @@ jobs:
         images: ${{ env.REGISTRY_IMAGE }}
         tags: |
           type=ref,event=branch
-          type=raw,value=latest,enable={{is_default_branch}}
+          type=ref,event=tag
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
@@ -54,7 +54,7 @@ jobs:
       id: build
       uses: docker/build-push-action@v5
       with:
-        context: .
+        context: ./ubuntu
         platforms: ${{ matrix.platform }}
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
@@ -92,10 +92,7 @@ jobs:
         images: ${{ env.REGISTRY_IMAGE }}
         tags: |
           type=ref,event=branch
-          type=ref,event=pr
-          type=semver,pattern={{version}}
-          type=semver,pattern={{major}}.{{minor}}
-          type=semver,pattern={{major}}
+          type=ref,event=tag
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
