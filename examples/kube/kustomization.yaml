@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - daemonset.yaml
+
+configMapGenerator:
+  - name: nftables-config
+    files:
+      - nftables/firewall.conf
+      - nftables/ppp.conf
