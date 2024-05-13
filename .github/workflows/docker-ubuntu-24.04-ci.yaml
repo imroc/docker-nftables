@@ -2,14 +2,8 @@ name: Docker Image CI
 
 on:
   push:
-    branches:
-    - '*'
-
     tags:
-    - '*'
-
-    paths:
-    - 'ubuntu-24.04/**'
+    - 'ubuntu-24.04'
 
 env:
   REGISTRY_IMAGE: imroc/nftables
