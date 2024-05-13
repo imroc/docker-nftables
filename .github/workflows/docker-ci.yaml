@@ -12,7 +12,7 @@ on:
     - '**.md'
 
 env:
-  REGISTRY_IMAGE: imroc/docker-nftables-ubuntu
+  REGISTRY_IMAGE: imroc/nftables-ubuntu
 
 jobs:
   build:
